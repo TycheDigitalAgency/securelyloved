@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Roadmap | Securely Loved</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="https://assets.cdn.filesafe.space/erNBMEPHr5mwBKO660ir/media/695ea829a0a48408c7196071.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --forest: #2b4231;
+      --linen: #e5e0d4;
+      --walnut: #6c5138;
+      --cream: #e7e0d5;
+      --navy: #1e3249;
+      --text-primary: #1a1a1a;
+      --text-secondary: #5a5a5a;
+      --text-muted: #8a8a8a;
+      --bg: #f5f2ee;
+      --surface: #ffffff;
+      --border: rgba(0,0,0,0.1);
+      --border-mid: rgba(0,0,0,0.18);
+      --radius: 8px;
+      --radius-lg: 12px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'Montserrat', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- HEADER ---- */
+    .site-header {
+      background: var(--forest);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .site-header-left {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+    .site-header-logo {
+      height: 32px;
+      width: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .site-header-wordmark {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--linen);
+      opacity: 0.85;
+    }
+    .site-header-client {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--linen);
+      opacity: 0.5;
+    }
+
+    /* ---- PROGRESS ---- */
+    .progress-bar { background: var(--navy); height: 3px; }
+    .progress-fill {
+      height: 3px;
+      background: var(--linen);
+      opacity: 0.55;
+      transition: width 0.45s ease;
+      width: 14%;
+    }
+
+    /* ---- SLIDE WRAPPER ---- */
+    .slide-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 40px 32px 32px;
+    }
+    .slide { display: none; }
+    .slide.active { display: block; }
+
+    /* ---- TYPOGRAPHY ---- */
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--walnut);
+      margin-bottom: 8px;
+    }
+    .slide-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 22px;
+    }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 22px;
+      margin-bottom: 9px;
+    }
+    .body-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    /* ---- LIST ---- */
+    .build-list { list-style: none; }
+    .build-list li {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .build-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 13px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--walnut);
+      opacity: 0.55;
+    }
+
+    /* ---- META PILLS ---- */
+    .meta-row { display: flex; gap: 14px; margin-top: 22px; }
+    .meta-pill {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px 16px;
+      flex: 1;
+    }
+    .meta-pill .pill-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .meta-pill .pill-value {
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    /* ---- DECISION ---- */
+    .decision-block {
+      margin-top: 26px;
+      border-top: 0.5px solid var(--border);
+      padding-top: 22px;
+    }
+    .decision-label {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .decision-options { display: flex; flex-direction: column; gap: 9px; }
+    .radio-btn {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      cursor: pointer;
+      padding: 13px 17px;
+      border-radius: var(--radius);
+      border: 0.5px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.15s, background 0.15s;
+      user-select: none;
+    }
+    .radio-btn:hover { border-color: var(--border-mid); }
+    .radio-btn.selected { border-color: var(--forest); background: rgba(43,66,49,0.04); }
+    .radio-circle {
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border-mid);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.15s;
+    }
+    .radio-btn.selected .radio-circle { border-color: var(--forest); }
+    .radio-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--forest);
+      display: none;
+    }
+    .radio-btn.selected .radio-dot { display: block; }
+    .radio-text {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+
+    /* ---- NAV ---- */
+    .slide-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 32px;
+      padding-top: 22px;
+      border-top: 0.5px solid var(--border);
+    }
+    .btn {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 10px 22px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      border: 0.5px solid var(--border-mid);
+      background: transparent;
+      color: var(--text-primary);
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.7; }
+    .btn.primary { background: var(--forest); color: var(--linen); border-color: var(--forest); }
+    .btn.primary:hover { opacity: 0.85; }
+    .btn:disabled { opacity: 0.28; cursor: default; pointer-events: none; }
+    .step-counter {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ---- INTRO HIGHLIGHT ---- */
+    .intro-highlight {
+      background: rgba(43,66,49,0.05);
+      border-left: 2px solid var(--forest);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 15px 18px;
+      margin-top: 18px;
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .intro-footnote {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+
+    /* ---- RETAINER BLOCK ---- */
+    .retainer-intro {
+      background: var(--forest);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      margin-bottom: 22px;
+    }
+    .retainer-intro p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--linen);
+      line-height: 1.8;
+      opacity: 0.92;
+    }
+
+    /* ---- OPTION CARDS ---- */
+    .option-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .option-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .option-card:hover { border-color: var(--border-mid); }
+    .option-card.selected { border: 2px solid var(--forest); }
+    .card-tag {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+    }
+    .card-name {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 9px;
+      line-height: 1.3;
+    }
+    .card-price {
+      font-family: var(--font-body);
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--forest);
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ---- SUMMARY ---- */
+    .summary-item {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 17px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .summary-item .s-name {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .summary-item .s-timeline {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .summary-item .s-price {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 16px;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 17px;
+      background: var(--forest);
+      border-radius: var(--radius);
+      margin-top: 4px;
+    }
+    .total-row .t-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--linen);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .total-row .t-amount {
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--linen);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 26px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+      border: 0.5px dashed var(--border-mid);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+    }
+
+    /* ---- FORM ---- */
+    .submit-form { margin-top: 22px; }
+    .submit-note {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+    .submit-form input,
+    .submit-form textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 13px;
+      font-family: var(--font-body);
+      padding: 11px 14px;
+      border-radius: var(--radius);
+      border: 0.5px solid var(--border-mid);
+      background: var(--surface);
+      color: var(--text-primary);
+      display: block;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .submit-form input:focus,
+    .submit-form textarea:focus { border-color: var(--forest); }
+    .submit-form textarea { height: 88px; resize: vertical; }
+    .btn-full { width: 100%; padding: 13px; font-size: 13px; }
+
+    /* ---- CONFIRMATION ---- */
+    .confirm-wrap { text-align: center; padding: 40px 0 20px; }
+    .confirm-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(43,66,49,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .confirm-icon svg { width: 24px; height: 24px; stroke: var(--forest); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .confirm-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+    .confirm-body {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 380px;
+      margin: 0 auto 28px;
+    }
+
+    /* ---- SPINNER ---- */
+    .spinner-wrap { display: none; text-align: center; padding: 12px 0; }
+    .spinner {
+      width: 22px; height: 22px;
+      border: 2px solid var(--border-mid);
+      border-top-color: var(--forest);
+      border-radius: 50%;
+      display: inline-block;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 560px) {
+      .slide-container { padding: 28px 20px 24px; }
+      .site-header { padding: 14px 20px; }
+      .option-cards { grid-template-columns: 1fr; }
+      .meta-row { flex-direction: column; }
+      .slide-title { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header-left">
+      <img class="site-header-logo" src="https://assets.cdn.filesafe.space/erNBMEPHr5mwBKO660ir/media/69eebbcd05d4199001d796c8.png" alt="Tyche Digital Agency" />
+      <span class="site-header-wordmark">Tyche Digital Agency</span>
+    </div>
+    <span class="site-header-client">Growth Roadmap &nbsp;&middot;&nbsp; Securely Loved</span>
+  </header>
+  <div class="progress-bar">
+    <div class="progress-fill" id="progress"></div>
+  </div>
+
+  <div class="slide-container">
+
+    <!-- SLIDE 0: Intro -->
+    <div class="slide active" id="slide-0">
+      <div class="eyebrow">Recommended Next Phase</div>
+      <div class="slide-title">Your vision for Securely Loved doesn't stop here.</div>
+      <div class="body-text">Throughout this project, you shared where you want Securely Loved to go. Some of it was in scope. Some of it we put a pin in. Some of it came up as we got deeper into your content and systems. This is all of that in one place.</div>
+      <div class="intro-highlight">Each recommendation below maps directly to something you mentioned, something we uncovered while doing the work, or both. Review each one and mark your decision. At the end you'll see a clean summary of what you want to move forward with. No pressure, no package deals. Just what makes sense for right now.</div>
+      <div class="intro-footnote">Five recommendations. Takes about four minutes. Could be worth a lot more than that.</div>
+      <div class="slide-nav">
+        <span></span>
+        <span class="step-counter">1 of 7</span>
+        <button class="btn primary" onclick="goNext()">Let's get into it &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 1: Blog Optimization -->
+    <div class="slide" id="slide-1">
+      <div class="eyebrow">Recommendation 1 of 5</div>
+      <div class="slide-title">Blog Optimization & Internal Linking</div>
+      <div class="section-label">Why we're recommending this</div>
+      <div class="body-text">During the rebuild, we migrated your full blog library into the new website. While reviewing the content, we noticed that many articles still send readers away from Securely Loved through external links. This is an opportunity to turn your existing content into a much stronger marketing asset by keeping visitors inside your ecosystem and connecting them to your videos, services, gift cards, booking pages, and related articles.</div>
+      <div class="section-label">What we'll build</div>
+      <ul class="build-list">
+        <li>Review all 94 blog articles</li>
+        <li>Remove unnecessary outbound links</li>
+        <li>Add strategic internal links between related articles</li>
+        <li>Connect articles to relevant YouTube videos</li>
+        <li>Link readers to appropriate services and booking pages</li>
+        <li>Improve SEO opportunities where appropriate</li>
+        <li>Republish each article</li>
+      </ul>
+      <div class="section-label">Business impact</div>
+      <ul class="build-list">
+        <li>Keep visitors on your website longer</li>
+        <li>Strengthen SEO through internal linking</li>
+        <li>Increase bookings from existing content</li>
+        <li>Create stronger pathways between your blogs, videos, and services</li>
+        <li>Turn your blog library into a long-term lead generation asset</li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill"><div class="pill-label">Timeline</div><div class="pill-value">6&ndash;8 weeks</div></div>
+        <div class="meta-pill"><div class="pill-label">Investment</div><div class="pill-value">$5,250</div></div>
+      </div>
+      <div class="decision-block">
+        <div class="decision-label">Your decision</div>
+        <div class="decision-options">
+          <div class="radio-btn" id="s1-yes" onclick="setDecision(1,'yes')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">Yes, let's move forward.</span>
+          </div>
+          <div class="radio-btn" id="s1-no" onclick="setDecision(1,'no')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">I'll revisit this later.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">2 of 7</span>
+        <button class="btn primary" id="next-1" onclick="goNext()" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Cancellation Workflow -->
+    <div class="slide" id="slide-2">
+      <div class="eyebrow">Recommendation 2 of 5</div>
+      <div class="slide-title">Cancellation, Refund & Rescheduling Workflow</div>
+      <div class="section-label">Why we're recommending this</div>
+      <div class="body-text">During testing, we found an opportunity to create a much smoother experience when a client cancels a paid session. Right now that moment requires manual handling on your end. We can build a system that guides clients through their next step automatically, so nothing falls through and you are not the one chasing it down.</div>
+      <div class="section-label">What we'll build</div>
+      <ul class="build-list">
+        <li>Automated cancellation workflow</li>
+        <li>Email asking whether the client wants to reschedule or request a refund</li>
+        <li>Rescheduling pathway</li>
+        <li>Refund request pathway</li>
+        <li>CRM updates and internal notifications</li>
+        <li>Complete testing</li>
+      </ul>
+      <div class="section-label">Business impact</div>
+      <ul class="build-list">
+        <li>Reduce manual administration</li>
+        <li>Improve the client experience at a vulnerable moment</li>
+        <li>Standardize every cancellation through the same process</li>
+        <li>Save time and ensure nothing falls through</li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill"><div class="pill-label">Timeline</div><div class="pill-value">1&ndash;2 weeks</div></div>
+        <div class="meta-pill"><div class="pill-label">Investment</div><div class="pill-value">$1,500</div></div>
+      </div>
+      <div class="decision-block">
+        <div class="decision-label">Your decision</div>
+        <div class="decision-options">
+          <div class="radio-btn" id="s2-yes" onclick="setDecision(2,'yes')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">Yes, let's move forward.</span>
+          </div>
+          <div class="radio-btn" id="s2-no" onclick="setDecision(2,'no')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">I'll revisit this later.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">3 of 7</span>
+        <button class="btn primary" id="next-2" onclick="goNext()" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Gift Card -->
+    <div class="slide" id="slide-3">
+      <div class="eyebrow">Recommendation 3 of 5</div>
+      <div class="slide-title">Gift Card Expansion</div>
+      <div class="section-label">Why we're recommending this</div>
+      <div class="body-text">Gift cards are available, but they are not easy to find. People who want to give the gift of Securely Loved are having to work for it. Putting gift cards in more of the right places across your site is a small lift with a pretty direct line to more sales, especially heading into any gifting season.</div>
+      <div class="section-label">What we'll build</div>
+      <ul class="build-list">
+        <li>Additional gift card placements throughout the website</li>
+        <li>Strategic calls-to-action in high-visibility locations</li>
+        <li>Navigation improvements</li>
+        <li>Service page integration</li>
+        <li>Testing across desktop and mobile</li>
+      </ul>
+      <div class="section-label">Business impact</div>
+      <ul class="build-list">
+        <li>Increase gift card sales without additional marketing spend</li>
+        <li>Improve discoverability for first-time visitors</li>
+        <li>Capture seasonal and spontaneous purchases</li>
+        <li>Reduce friction at the point of purchase</li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill"><div class="pill-label">Timeline</div><div class="pill-value">1&ndash;2 weeks</div></div>
+        <div class="meta-pill"><div class="pill-label">Investment</div><div class="pill-value">$750</div></div>
+      </div>
+      <div class="decision-block">
+        <div class="decision-label">Your decision</div>
+        <div class="decision-options">
+          <div class="radio-btn" id="s3-yes" onclick="setDecision(3,'yes')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">Yes, let's move forward.</span>
+          </div>
+          <div class="radio-btn" id="s3-no" onclick="setDecision(3,'no')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">I'll revisit this later.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">4 of 7</span>
+        <button class="btn primary" id="next-3" onclick="goNext()" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Course Experience -->
+    <div class="slide" id="slide-4">
+      <div class="eyebrow">Recommendation 4 of 5</div>
+      <div class="slide-title">Course Experience Optimization</div>
+      <div class="section-label">Why we're recommending this</div>
+      <div class="body-text">Your course currently functions as a video library. That is fine, but it is leaving a lot on the table. When people finish a course and actually feel like they went through something, they talk about it, they refer people, and they come back for more. This project turns your course into a structured learning experience that earns that response.</div>
+      <div class="section-label">What we'll build</div>
+      <ul class="build-list">
+        <li>Lesson summaries for each module</li>
+        <li>Downloadable workbooks or resource guides</li>
+        <li>Reflection prompts and worksheets</li>
+        <li>Progress tracking implementation</li>
+        <li>Strategic calls to action inside the course experience</li>
+        <li>Review of module sequencing and flow</li>
+      </ul>
+      <div class="section-label">Business impact</div>
+      <ul class="build-list">
+        <li>Increase course completion rates</li>
+        <li>Improve the perceived value of the course product</li>
+        <li>Create natural pathways from course to services</li>
+        <li>Strengthen client outcomes and testimonials</li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill"><div class="pill-label">Timeline</div><div class="pill-value">3&ndash;5 weeks</div></div>
+        <div class="meta-pill"><div class="pill-label">Investment</div><div class="pill-value">$2,000&ndash;$3,500</div></div>
+      </div>
+      <div class="decision-block">
+        <div class="decision-label">Your decision</div>
+        <div class="decision-options">
+          <div class="radio-btn" id="s4-yes" onclick="setDecision(4,'yes')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">Yes, let's move forward.</span>
+          </div>
+          <div class="radio-btn" id="s4-no" onclick="setDecision(4,'no')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">I'll revisit this later.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">5 of 7</span>
+        <button class="btn primary" id="next-4" onclick="goNext()" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Attachment Assessment -->
+    <div class="slide" id="slide-5">
+      <div class="eyebrow">Recommendation 5 of 5</div>
+      <div class="slide-title">Attachment Assessment & Personalized Insights</div>
+      <div class="section-label">Why we're recommending this</div>
+      <div class="body-text">This one is genuinely exciting. Your free quiz is already one of the strongest things on your site. A premium paid assessment takes that same concept deeper, delivers a personalized report with real recommendations, and creates a new revenue stream that runs whether or not you are actively working. It also qualifies clients before they ever book, which means better sessions and better outcomes on both sides.</div>
+      <div class="section-label">What we'll build</div>
+      <ul class="build-list">
+        <li>40&ndash;60 question assessment with deeper analysis</li>
+        <li>Personalized PDF report generated on completion</li>
+        <li>Tailored recommendations based on attachment style</li>
+        <li>Booking call-to-action embedded in the report</li>
+        <li>Automated delivery system</li>
+        <li>Payment integration</li>
+        <li>CRM segmentation by result</li>
+      </ul>
+      <div class="section-label">Business impact</div>
+      <ul class="build-list">
+        <li>Create a new digital revenue stream</li>
+        <li>Qualify clients before booking for better-fit sessions</li>
+        <li>Increase bookings from the assessment flow</li>
+        <li>Deepen your relationship with prospects before they become clients</li>
+      </ul>
+      <div class="meta-row">
+        <div class="meta-pill"><div class="pill-label">Timeline</div><div class="pill-value">4&ndash;6 weeks</div></div>
+        <div class="meta-pill"><div class="pill-label">Investment</div><div class="pill-value">Starting at $3,500</div></div>
+      </div>
+      <div class="decision-block">
+        <div class="decision-label">Your decision</div>
+        <div class="decision-options">
+          <div class="radio-btn" id="s5-yes" onclick="setDecision(5,'yes')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">Yes, let's move forward.</span>
+          </div>
+          <div class="radio-btn" id="s5-no" onclick="setDecision(5,'no')">
+            <div class="radio-circle"><div class="radio-dot"></div></div>
+            <span class="radio-text">I'll revisit this later.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">6 of 7</span>
+        <button class="btn primary" id="next-5" onclick="goNext()" disabled>Continue &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Growth & Operations Partner -->
+    <div class="slide" id="slide-6">
+      <div class="eyebrow">One more thing before you decide</div>
+      <div class="slide-title">Growth & Operations Partner</div>
+      <div class="retainer-intro">
+        <p>Now that you have seen what is possible, here is another way to think about it. Instead of doing it all at once, we keep going together. Every month we prioritize the work that moves the needle most for Securely Loved. You get ongoing strategy, implementation, and the person who already knows your entire system in your corner every month.</p>
+      </div>
+      <div class="section-label">What ongoing support looks like</div>
+      <div class="body-text" style="margin-bottom:12px;">Every month looks a little different depending on what your business needs. It could be any combination of:</div>
+      <ul class="build-list">
+        <li>Website updates and improvements</li>
+        <li>SEO optimization and blog work</li>
+        <li>Automation enhancements and new workflows</li>
+        <li>Email updates and landing pages</li>
+        <li>Technical troubleshooting (the stuff that always comes up)</li>
+        <li>Funnel optimization</li>
+        <li>Ongoing strategic recommendations as your business grows</li>
+      </ul>
+      <div class="section-label" style="margin-top:26px;">How would you like to move forward?</div>
+      <div class="option-cards">
+        <div class="option-card" id="opt-projects" onclick="selectOption('projects')">
+          <div class="card-tag">Option 1</div>
+          <div class="card-name">Individual Projects</div>
+          <div class="card-price">Per project</div>
+          <div class="card-desc">Choose the recommendations you want completed. Each project is scoped, prioritized, and built on its own timeline. Best if you want specific things done quickly.</div>
+        </div>
+        <div class="option-card" id="opt-partner" onclick="selectOption('partner')">
+          <div class="card-tag">Option 2</div>
+          <div class="card-name">Growth & Operations Partner</div>
+          <div class="card-price">$1,500/month</div>
+          <div class="card-desc">6-month commitment. We work through priorities together month by month. Includes ongoing strategy, implementation, and support as new opportunities come up.</div>
+        </div>
+      </div>
+      <div class="slide-nav">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span class="step-counter">7 of 7</span>
+        <button class="btn primary" id="next-6" onclick="buildAndShowSummary()" disabled>See my plan &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Summary -->
+    <div class="slide" id="slide-7">
+      <div class="eyebrow">Your Growth Plan</div>
+      <div class="slide-title">Here's everything you selected.</div>
+      <div id="summary-items"></div>
+      <div class="submit-form">
+        <div class="section-label" style="margin-top:6px; margin-bottom:10px;">Approve & submit</div>
+        <div class="submit-note">Add your name and email below. I'll review your selections and send over a payment link for everything you want to move forward with.</div>
+        <input type="text" id="client-name" placeholder="Your name" autocomplete="name" />
+        <input type="email" id="client-email" placeholder="Your email" autocomplete="email" />
+        <textarea id="client-notes" placeholder="Anything you'd like me to know before we get started? (optional)"></textarea>
+        <div class="spinner-wrap" id="spinner"><div class="spinner"></div></div>
+        <button class="btn primary btn-full" id="submit-btn" onclick="submitPlan()">Submit my growth plan &rarr;</button>
+      </div>
+      <div class="slide-nav" style="border-top:none; padding-top:0; margin-top:14px;">
+        <button class="btn" onclick="goPrev()">&larr; Back</button>
+        <span></span><span></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Confirmation -->
+    <div class="slide" id="slide-8">
+      <div class="confirm-wrap">
+        <div class="confirm-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <div class="confirm-title">You're all set.</div>
+        <div class="confirm-body">Got it. I'll review your selections and send a payment link to the email you provided. Looking forward to the next phase.</div>
+      </div>
+      <div id="confirm-summary"></div>
+    </div>
+
+  </div>
+
+  <script>
+    // ---- EMAILJS CONFIG ----
+    const EMAILJS_PUBLIC_KEY  = 'MJt_zDIq8FCr544zR';
+    const EMAILJS_SERVICE_ID  = 'service_doffj8i';
+    const EMAILJS_TEMPLATE_ID = 'template_z5epa3g';
+    // ---- END CONFIG ----
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    let current = 0;
+    const decisions = { 1: null, 2: null, 3: null, 4: null, 5: null };
+    let pathChoice = null;
+
+    const services = [
+      { id: 1, name: 'Blog Optimization & Internal Linking',           price: '$5,250',            timeline: '6\u20138 weeks' },
+      { id: 2, name: 'Cancellation, Refund & Rescheduling Workflow',  price: '$1,500',             timeline: '1\u20132 weeks' },
+      { id: 3, name: 'Gift Card Expansion',                           price: '$750',               timeline: '1\u20132 weeks' },
+      { id: 4, name: 'Course Experience Optimization',                price: '$2,000\u2013$3,500', timeline: '3\u20135 weeks' },
+      { id: 5, name: 'Attachment Assessment & Personalized Insights', price: 'Starting at $3,500', timeline: '4\u20136 weeks' },
+    ];
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      document.getElementById('slide-' + n).classList.add('active');
+      document.getElementById('progress').style.width = Math.round((n / 7) * 100) + '%';
+      current = n;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goNext() { if (current < 7) showSlide(current + 1); }
+    function goPrev() { if (current > 0) showSlide(current - 1); }
+
+    function setDecision(num, val) {
+      decisions[num] = val;
+      document.getElementById('s' + num + '-yes').classList.toggle('selected', val === 'yes');
+      document.getElementById('s' + num + '-no').classList.toggle('selected',  val === 'no');
+      const btn = document.getElementById('next-' + num);
+      if (btn) btn.disabled = false;
+    }
+
+    function selectOption(opt) {
+      pathChoice = opt;
+      document.getElementById('opt-projects').classList.toggle('selected', opt === 'projects');
+      document.getElementById('opt-partner').classList.toggle('selected',  opt === 'partner');
+      document.getElementById('next-6').disabled = false;
+    }
+
+    function buildSummaryHTML() {
+      const selected = services.filter(s => decisions[s.id] === 'yes');
+      let html = '';
+      if (pathChoice === 'partner') {
+        html += '<div class="summary-item"><div><div class="s-name">Growth &amp; Operations Partner</div><div class="s-timeline">6-month commitment</div></div><div class="s-price">$1,500/mo</div></div>';
+      } else if (selected.length === 0) {
+        html = '<div class="empty-state">No individual projects selected.</div>';
+      } else {
+        selected.forEach(s => {
+          html += '<div class="summary-item"><div><div class="s-name">' + s.name + '</div><div class="s-timeline">' + s.timeline + '</div></div><div class="s-price">' + s.price + '</div></div>';
+        });
+      }
+      if (selected.length > 0 || pathChoice === 'partner') {
+        const label = pathChoice === 'partner' ? '$1,500/mo' : selected.length + ' project' + (selected.length !== 1 ? 's' : '');
+        html += '<div class="total-row"><span class="t-label">Ready to move forward</span><span class="t-amount">' + label + '</span></div>';
+      }
+      return html;
+    }
+
+    function buildAndShowSummary() {
+      document.getElementById('summary-items').innerHTML = buildSummaryHTML();
+      showSlide(7);
+    }
+
+    function buildEmailBody(name, email, notes) {
+      const selected = services.filter(s => decisions[s.id] === 'yes');
+      const lines = [
+        'CLIENT: ' + name,
+        'EMAIL: ' + email,
+        '',
+        'SELECTED PATH: ' + (pathChoice === 'partner' ? 'Growth & Operations Partner ($1,500/month, 6-month commitment)' : 'Individual Projects'),
+        '',
+      ];
+      if (pathChoice !== 'partner') {
+        lines.push('SELECTED PROJECTS:');
+        if (selected.length === 0) {
+          lines.push('  (none selected)');
+        } else {
+          selected.forEach(s => lines.push('  - ' + s.name + ' | ' + s.price + ' | ' + s.timeline));
+        }
+        lines.push('');
+      }
+      lines.push('ALL DECISIONS:');
+      services.forEach(s => lines.push('  ' + s.name + ': ' + (decisions[s.id] === 'yes' ? 'YES' : 'pass')));
+      if (notes) { lines.push('', 'NOTES FROM CLIENT:', notes); }
+      return lines.join('\n');
+    }
+
+    function submitPlan() {
+      const name  = document.getElementById('client-name').value.trim();
+      const email = document.getElementById('client-email').value.trim();
+      const notes = document.getElementById('client-notes').value.trim();
+      if (!name || !email) { alert('Please add your name and email before submitting.'); return; }
+
+      document.getElementById('submit-btn').disabled = true;
+      document.getElementById('spinner').style.display = 'block';
+
+      emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        to_email:     'veronica@tychetouch.com',
+        client_name:  name,
+        client_email: email,
+        path_choice:  pathChoice === 'partner' ? 'Growth & Operations Partner' : 'Individual Projects',
+        summary:      buildEmailBody(name, email, notes),
+      })
+      .then(() => { showConfirmation(); })
+      .catch(() => {
+        document.getElementById('spinner').style.display = 'none';
+        document.getElementById('submit-btn').disabled = false;
+        alert('Something went wrong. Please try again or email veronica@tychetouch.com directly.');
+      });
+    }
+
+    function showConfirmation() {
+      const selected = services.filter(s => decisions[s.id] === 'yes');
+      let html = '';
+      if (pathChoice === 'partner') {
+        html = '<div class="summary-item"><div><div class="s-name">Growth &amp; Operations Partner</div></div><div class="s-price">$1,500/mo</div></div>';
+      } else {
+        selected.forEach(s => { html += '<div class="summary-item"><div><div class="s-name">' + s.name + '</div></div><div class="s-price">' + s.price + '</div></div>'; });
+      }
+      document.getElementById('confirm-summary').innerHTML = html;
+      showSlide(8);
+    }
+  </script>
+</body>
+</html>
